@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/blossomweb/blossomweb.iml" filepath="$PROJECT_DIR$/blossomweb/blossomweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-authroity/web-authroity.iml" filepath="$PROJECT_DIR$/web-authroity/web-authroity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-common/web-common.iml" filepath="$PROJECT_DIR$/web-common/web-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-log/web-log.iml" filepath="$PROJECT_DIR$/web-log/web-log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-system/web-system.iml" filepath="$PROJECT_DIR$/web-system/web-system.iml" />
+    </modules>
+  </component>
+</project>
