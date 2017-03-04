@@ -3,7 +3,7 @@
 <mapper namespace="com.blossom.web.mapper.LogSystemMapper">
 
 
-	<resultMap type="com.blossom.web.model.LogSystemModel" id="SystemLogMap">
+	<resultMap type="com.blossom.web.model.LogSystemModel" id="systemLogMap">
 		<result column="id" property="id"/>
 		<result column="className" property="className"/>
 		<result column="methodName" property="methodName"/>
@@ -13,10 +13,9 @@
 	</resultMap>
 	
 	<!-- 获取系统日志 -->
-	<select id="queryLogSystem" parameterType="java.util.Map" resultMap="SystemLogMap">
+	<select id="queryLogSystem" parameterType="java.util.Map" resultMap="systemLogMap">
 		SELECT id,className,methodName,createTime,loglevel,message
 		FROM tb_system_log
-		
 	</select>
 
 </mapper>

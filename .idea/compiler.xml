@@ -9,6 +9,7 @@
         <module name="web-authroity" />
         <module name="web-common" />
         <module name="web-log" />
+        <module name="web-managersystem" />
         <module name="web-system" />
       </profile>
     </annotationProcessing>
@@ -16,10 +17,12 @@
       <module name="blossom-web-log" target="1.5" />
       <module name="blossomweb" target="1.6" />
       <module name="blossomweblog" target="1.5" />
-      <module name="web-authroity" target="1.8" />
-      <module name="web-common" target="1.8" />
+      <module name="web-authroity" target="1.6" />
+      <module name="web-common" target="1.6" />
       <module name="web-log" target="1.8" />
-      <module name="web-system" target="1.8" />
+      <module name="web-managersystem" target="1.6" />
+      <module name="web-system" target="1.6" />
+      <module name="web-UI" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
