@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: web-managersystem Maven Webapp
-Implementation-Version: 1.0
-Built-By: Blossom
-Implementation-Vendor-Id: com.blossom.web
-Created-By: IntelliJ IDEA
-Build-Jdk: 1.8.0_102
-Main-Class: ${start-class}
-

@@ -6,8 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/web-authroity/web-authroity.iml" filepath="$PROJECT_DIR$/web-authroity/web-authroity.iml" />
       <module fileurl="file://$PROJECT_DIR$/web-common/web-common.iml" filepath="$PROJECT_DIR$/web-common/web-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/web-log/web-log.iml" filepath="$PROJECT_DIR$/web-log/web-log.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-managersystem/web-managersystem.iml" filepath="$PROJECT_DIR$/web-managersystem/web-managersystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/web-system/web-system.iml" filepath="$PROJECT_DIR$/web-system/web-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-ui/web-ui.iml" filepath="$PROJECT_DIR$/web-ui/web-ui.iml" />
     </modules>
   </component>
 </project>
