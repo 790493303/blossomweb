@@ -132,7 +132,7 @@ public class JsonUtils {
             throw new Exception("参数不全!");
         }
         JSONObject resultJSON = new JSONObject();
-        resultJSON.put("status","0");
+        resultJSON.put("status","1");
         resultJSON.put("message",sucMessage);
         if (null != objects && objects.length >= 2){
             for (int i = 0; i < objects.length; i = i+2) {
