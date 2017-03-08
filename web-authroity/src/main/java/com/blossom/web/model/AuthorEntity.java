@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class AuthorEntity implements Serializable{
 
+    private static final long serialVersionUID = -7419659398941990446L;
     //权限编号
     private Integer authortyId;
     //父权限编号

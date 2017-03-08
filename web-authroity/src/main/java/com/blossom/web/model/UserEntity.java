@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class UserEntity implements Serializable{
 
+    private static final long serialVersionUID = -6236158510987657132L;
     //用户编号
     private Integer userId;
     //组织编号
@@ -77,8 +78,47 @@ public class UserEntity implements Serializable{
         return loginCount;
     }
 
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
+    public void setOrganizationId(Integer organizationId) {
+        this.organizationId = organizationId;
+    }
 
+    public void setLoginAccount(String loginAccount) {
+        this.loginAccount = loginAccount;
+    }
 
+    public void setLoginPassword(String loginPassword) {
+        this.loginPassword = loginPassword;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setLoginTime(Date loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public void setLoginCount(Integer loginCount) {
+        this.loginCount = loginCount;
+    }
 }

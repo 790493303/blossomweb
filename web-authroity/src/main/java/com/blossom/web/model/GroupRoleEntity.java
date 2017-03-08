@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class GroupRoleEntity implements Serializable{
 
+    private static final long serialVersionUID = -179605806531042209L;
     //组角色编号
     private Integer groupRoleId;
     //组ID

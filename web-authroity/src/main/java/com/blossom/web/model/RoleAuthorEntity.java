@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class RoleAuthorEntity implements Serializable{
 
+    private static final long serialVersionUID = 6200912850406887545L;
     //角色权限编号
     private Integer roleAuthortyId;
     //权限编号

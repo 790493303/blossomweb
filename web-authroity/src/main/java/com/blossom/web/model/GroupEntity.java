@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class GroupEntity implements Serializable{
 
+    private static final long serialVersionUID = -3047316469890337897L;
     //组编号
     private Integer groupId;
     //组名称

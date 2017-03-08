@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class UserGroupEntity implements Serializable{
 
+    private static final long serialVersionUID = 5910266509740612309L;
     //用户组编号
     private Integer userGroupId;
     //用户编号

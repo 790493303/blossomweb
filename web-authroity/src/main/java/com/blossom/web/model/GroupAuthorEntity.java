@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class GroupAuthorEntity implements Serializable{
 
+    private static final long serialVersionUID = 2521395105943382216L;
     //组权限编号
     private Integer groupAuthortyId;
     //组ID

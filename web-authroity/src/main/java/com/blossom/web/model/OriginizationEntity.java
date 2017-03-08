@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class OriginizationEntity implements Serializable{
 
+    private static final long serialVersionUID = -1586849223452895346L;
     //组织编号
     private Integer organizationId;
     //父组织编号

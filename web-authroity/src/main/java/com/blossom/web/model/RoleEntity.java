@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class RoleEntity implements Serializable{
 
+    private static final long serialVersionUID = 8325178831720827238L;
     //角色编号
     private Integer roleId;
     //父角色编号
