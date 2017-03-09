@@ -36,12 +36,45 @@ public class RoleDaoImpl implements IRoleDao{
 
     /**
      * @param pMap
-     * @description 根据用户账号获取角色
+     * @description 按条件获取角色信息
      * @author Blossom
-     * @DateTime 2017/3/8 14:40
+     * @DateTime 2017/3/9 10:45
      */
     @Override
-    public List<RoleEntity> queryRoleInfoByUserAccount(Map<String, Object> pMap) {
-        return roleMapper.queryRoleInfoByUserAccount(pMap);
+    public List<RoleEntity> queryRoleInfo(Map<String, Object> pMap) {
+        return roleMapper.queryAllRoleInfo(pMap);
+    }
+
+    /**
+     * @param role
+     * @description 添加角色信息
+     * @author Blossom
+     * @DateTime 2017/3/8 22:50
+     */
+    @Override
+    public Integer saveRoleInfo(RoleEntity role) {
+        return roleMapper.insertRoleInfo(role);
+    }
+
+    /**
+     * @param pMap
+     * @description 删除角色信息
+     * @author Blossom
+     * @DateTime 2017/3/8 22:50
+     */
+    @Override
+    public Integer removeRoleInfo(Map<String, Object> pMap) {
+        return roleMapper.deleteRoleInfo(pMap);
+    }
+
+    /**
+     * @param pMap
+     * @description 更新角色信息
+     * @author Blossom
+     * @DateTime 2017/3/8 22:51
+     */
+    @Override
+    public Integer updateRoleInfo(Map<String, Object> pMap) {
+        return roleMapper.updateRoleInfo(pMap);
     }
 }

@@ -29,4 +29,16 @@ public class UserRoleEntity implements Serializable{
     public Integer getRoleId() {
         return roleId;
     }
+
+    public void setUserRoleId(Integer userRoleId) {
+        this.userRoleId = userRoleId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
 }

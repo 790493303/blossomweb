@@ -1,8 +1,6 @@
 package com.blossom.web.service.impl;
 
-import com.blossom.web.dao.IAuthorDao;
-import com.blossom.web.dao.IRoleDao;
-import com.blossom.web.dao.IUserDao;
+import com.blossom.web.dao.*;
 import com.blossom.web.model.AuthorEntity;
 import com.blossom.web.model.RoleEntity;
 import com.blossom.web.model.UserEntity;
@@ -26,10 +24,12 @@ public class UserServiceImpl implements IUserService {
 
     @Resource(name = "userDao")
     private IUserDao userDao;
-    @Resource(name = "roleDao")
-    private IRoleDao roleDao;
-    @Resource(name = "authorDao")
-    private IAuthorDao authorDao;
+    @Resource(name = "roleAuthorDao")
+    private IRoleAuthorDao roleAuthorDao;
+    @Resource(name = "userRoleDao")
+    private IUserRoleDao userRoleDao;
+    @Resource(name = "userAuthorDao")
+    private IUserAuthorDao userAuthorDao;
 
     /**
      * @param pJson
@@ -284,7 +284,7 @@ public class UserServiceImpl implements IUserService {
      * @param
      */
     private Set<String> queryRoleAuthor(Map<String,Object> pMap){
-        List<RoleEntity> roleEntities = roleDao.queryRoleInfoByUserAccount(pMap);
+        List<RoleEntity> roleEntities = userRoleDao.queryRoleInfoByUserAccount(pMap);
         Set<String> roleSet = new HashSet<>();
         if (!CollectionUtils.isEmpty(roleEntities)){
             for(RoleEntity role:roleEntities){
@@ -311,7 +311,7 @@ public class UserServiceImpl implements IUserService {
             String loginAccount = pJson.getString("loginAccount");
             Map<String,Object> map = new HashMap<>();
             map.put("loginAccount",loginAccount);
-            List<AuthorEntity> authorEntities = authorDao.queryAuthorInfoByUserAccount(map);
+            List<AuthorEntity> authorEntities = userAuthorDao.queryAuthorInfoByUserAccount(map);
             Set<String> authorSet = new HashSet<>();
             if (!CollectionUtils.isEmpty(authorEntities)){
                 for(AuthorEntity author: authorEntities){
@@ -328,7 +328,7 @@ public class UserServiceImpl implements IUserService {
                 while (itarator.hasNext()){
                     roleEntity = (RoleEntity) itarator.next();
                     map.put("roleId",roleEntity.getRoleId());
-                    authors =authorDao.queryAuthorInfoByRoleId(map);
+                    authors =roleAuthorDao.queryAuthorInfoByRoleId(map);
                     if (!CollectionUtils.isEmpty(authors)){
                         for(AuthorEntity author: authors){
                             authorSet.add(author.getAuthortyUrl());

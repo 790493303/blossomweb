@@ -69,4 +69,7 @@ public class RoleEntity implements Serializable{
         this.createTime = createTime;
         this.roleDescription = roleDescription;
     }
+
+    public RoleEntity() {
+    }
 }

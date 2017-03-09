@@ -21,11 +21,36 @@ public interface IRoleDao {
     List<RoleEntity> queryAllRoleInfo();
 
     /**
-     * @description 根据用户账号获取角色
+     * @description 按条件获取角色信息
      * @author Blossom
-     * @DateTime 2017/3/8 14:40
-     * @param pMap
+     * @DateTime 2017/3/9 10:45
+     * @param
      */
-    List<RoleEntity> queryRoleInfoByUserAccount(Map<String,Object> pMap);
+    List<RoleEntity> queryRoleInfo(Map<String,Object> pMap);
+
+    /**
+     * @description 添加角色信息
+     * @author Blossom
+     * @DateTime 2017/3/8 22:50
+     * @param
+     */
+    Integer saveRoleInfo(RoleEntity role);
+
+    /**
+     * @description 删除角色信息
+     * @author Blossom
+     * @DateTime 2017/3/8 22:50
+     * @param
+     */
+    Integer removeRoleInfo(Map<String,Object> pMap);
+
+    /**
+     * @description 更新角色信息
+     * @author Blossom
+     * @DateTime 2017/3/8 22:51
+     * @param
+     */
+    Integer updateRoleInfo(Map<String,Object> pMap);
+
 
 }

@@ -33,4 +33,28 @@ public interface IAuthorService {
      */
     JSONObject queryAuthorInfoByRoleId(JSONObject pJson);
 
+    /**
+     * @description 添加权限信息
+     * @author Blossom
+     * @DateTime 2017/3/9 10:52
+     * @param
+     */
+    JSONObject saveAuthorInfo(JSONObject pJson);
+
+    /**
+     * @description 删除权限信息
+     * @author Blossom
+     * @DateTime 2017/3/9 10:52
+     * @param
+     */
+    JSONObject removeAuthorInfo(JSONObject pJson);
+
+    /**
+     * @description 更新权限信息
+     * @author Blossom
+     * @DateTime 2017/3/9 10:53
+     * @param
+     */
+    JSONObject updateAuthorInfo(JSONObject pJson);
+
 }

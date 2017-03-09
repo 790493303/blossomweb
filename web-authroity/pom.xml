@@ -50,5 +50,10 @@
             <artifactId>web-common</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.blossom.web</groupId>
+            <artifactId>web-log</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>

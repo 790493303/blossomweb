@@ -16,19 +16,29 @@
         FROM  tb_authorty
     </select>
 
-    <!--根据用户账号获取权限-->
-    <select id="queryAuthorInfoByUserAccount" parameterType="java.util.Map" resultMap="authorMap">
-        SELECT a.authortyId authortyId,a.parentAuthortyId parentAuthortyId,a.authortyName authortyName,a.authortyDescription authortyDescription,a.authortyUrl authortyUrl
-       FROM tb_role r LEFT JOIN tb_role_authorty ra ON r.roleId = ra.roleId LEFT JOIN tb_authorty a ON ra.authortyId = a.authortyId
-       WHERE r.roleId = #{roleId}
-    </select>
+    <!--添加权限信息-->
+    <insert id="insertAuthorInfo" parameterType="com.blossom.web.model.AuthorEntity">
+        INSERT INTO
+          tb_authorty(parentAuthortyId,authortyName,authortyDescription,authortyUrl)
+        VALUES (#{parentAuthortyId},#{authortyName},#{authortyDescription},#{authortyUrl})
+    </insert>
 
-    <!--根据角色编号获取权限-->
-    <select id="queryAuthorInfoByRoleId" parameterType="java.util.Map" resultMap="authorMap">
-        SELECT a.authortyId authortyId,a.parentAuthortyId parentAuthortyId,a.authortyName authortyName,a.authortyDescription authortyDescription,a.authortyUrl authortyUrl
-        FROM tb_user u LEFT JOIN  tb_user_authorty ua ON u.userId = ua.userId LEFT JOIN tb_authorty a  ON
-         ua.authortyId = a.authortyId
-         WHERE u.loginAccount = #{loginAccount}
-    </select>
+    <!--修改权限信息-->
+    <update id="updateAuthorInfo" parameterType="java.util.Map">
+        UPDATE tb_authorty
+        <set>
+            <if test="authortyName != null"> authortyName = #{authortyName},</if>
+            <if test="authortyDescription != null"> authortyDescription = #{authortyDescription},</if>
+            <if test="authortyUrl != null">authortyUrl = #{authortyUrl}</if>
+        </set>
+        where
+            authortyId = #{authortyId}
+    </update>
+
+    <!--删除权限信息-->
+    <delete id="deleteAuthorInfo" parameterType="java.util.Map">
+        DELETE  FROM  tb_authorty WHERE authortyId = #{authortyId}
+    </delete>
+
 
 </mapper>

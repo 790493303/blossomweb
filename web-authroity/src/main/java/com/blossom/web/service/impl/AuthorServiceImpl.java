@@ -1,6 +1,8 @@
 package com.blossom.web.service.impl;
 
 import com.blossom.web.dao.IAuthorDao;
+import com.blossom.web.dao.IRoleAuthorDao;
+import com.blossom.web.dao.IUserAuthorDao;
 import com.blossom.web.model.AuthorEntity;
 import com.blossom.web.service.IAuthorService;
 import com.blossom.web.util.JsonUtils;
@@ -25,6 +27,10 @@ public class AuthorServiceImpl implements IAuthorService{
 
     @Resource(name = "authorDao")
     private IAuthorDao authorDao;
+    @Resource(name = "userAuthorDao")
+    private IUserAuthorDao userAuthorDao;
+    @Resource(name = "roleAuthorDao")
+    private IRoleAuthorDao roleAuthorDao;
 
 
     /**
@@ -44,7 +50,7 @@ public class AuthorServiceImpl implements IAuthorService{
             //按条件获取权限
             return null;
         }catch (Exception e){
-            LoggerUtils.addLoggerError(CLAZZ,"",e.getMessage());
+            LoggerUtils.addLoggerError(CLAZZ,"queryAllAuthorInfo",e.getMessage());
             e.printStackTrace();
             return JsonUtils.sealedExceptionJSON(e);
         }
@@ -58,7 +64,7 @@ public class AuthorServiceImpl implements IAuthorService{
      */
     @Override
     public JSONObject queryAuthorInfoByUserAccount(JSONObject pJson) {
-        LoggerUtils.addLoggerInfo(CLAZZ,"queryAllAuthorInfo",pJson.toString());
+        LoggerUtils.addLoggerInfo(CLAZZ,"queryAuthorInfoByUserAccount",pJson.toString());
         try{
             if (JsonUtils.checkJSONIsNull(pJson)
                     || JsonUtils.checkJSONKey(pJson,"loginAccount")){
@@ -66,12 +72,12 @@ public class AuthorServiceImpl implements IAuthorService{
             }
             Map<String,Object> map = new HashMap<>();
             String loginAccount = pJson.getString("loginAccount");
-            List<AuthorEntity> authorEntities = authorDao.queryAuthorInfoByUserAccount(map);
+            List<AuthorEntity> authorEntities = userAuthorDao.queryAuthorInfoByUserAccount(map);
 
             return JsonUtils.sealedSuccessJSON("","authors",authorEntities);
 
         }catch (Exception e){
-            LoggerUtils.addLoggerError(CLAZZ,"",e.getMessage());
+            LoggerUtils.addLoggerError(CLAZZ,"queryAuthorInfoByUserAccount",e.getMessage());
             e.printStackTrace();
             return JsonUtils.sealedExceptionJSON(e);
         }
@@ -85,7 +91,7 @@ public class AuthorServiceImpl implements IAuthorService{
      */
     @Override
     public JSONObject queryAuthorInfoByRoleId(JSONObject pJson) {
-        LoggerUtils.addLoggerInfo(CLAZZ,"queryAllAuthorInfo",pJson.toString());
+        LoggerUtils.addLoggerInfo(CLAZZ,"queryAuthorInfoByRoleId",pJson.toString());
         try{
             if (JsonUtils.checkJSONIsNull(pJson)
                     || JsonUtils.checkJSONKey(pJson,"roleId")){
@@ -94,12 +100,136 @@ public class AuthorServiceImpl implements IAuthorService{
             String roleId = pJson.getString("roleId");
             Map<String,Object> map = new HashMap<>();
             map.put("roleId",roleId);
-            List<AuthorEntity> authorEntities = authorDao.queryAuthorInfoByRoleId(map);
+            List<AuthorEntity> authorEntities = roleAuthorDao.queryAuthorInfoByRoleId(map);
 
             return JsonUtils.sealedSuccessJSON("","authors",authorEntities);
 
         }catch (Exception e){
-            LoggerUtils.addLoggerError(CLAZZ,"",e.getMessage());
+            LoggerUtils.addLoggerError(CLAZZ,"queryAuthorInfoByRoleId",e.getMessage());
+            e.printStackTrace();
+            return JsonUtils.sealedExceptionJSON(e);
+        }
+    }
+
+    /**
+     * @param pJson
+     * @description 添加权限信息
+     * @author Blossom
+     * @DateTime 2017/3/9 10:52
+     */
+    @Override
+    public JSONObject saveAuthorInfo(JSONObject pJson) {
+        LoggerUtils.addLoggerInfo(CLAZZ,"saveAuthorInfo",pJson.toString());
+        try {
+            if (JsonUtils.checkJSONIsNull(pJson)
+                    || JsonUtils.checkJSONKey(pJson,"authortyName")
+                    || JsonUtils.checkJSONKey(pJson,"authortyDescription")
+                    || JsonUtils.checkJSONKey(pJson,"authortyUrl")){
+                return JsonUtils.sealedErrorJSON("参数不全!");
+            }
+
+            String authortyName = pJson.getString("authortyName");
+            String authortyDescription = pJson.getString("authortyDescription");
+            String authortyUrl = pJson.getString("authortyUrl");
+            Integer parentAuthortyId = null;
+            if (!JsonUtils.checkJSONKey(pJson,"parentAuthortyId")){
+                parentAuthortyId = pJson.getInt("parentAuthortyId");
+            }
+
+            AuthorEntity author = new AuthorEntity();
+            author.setAuthortyDescription(authortyDescription);
+            author.setAuthortyName(authortyName);
+            author.setAuthortyUrl(authortyUrl);
+            author.setParentAuthortyId(parentAuthortyId);
+
+            Integer intTag = authorDao.saveAuthorInfo(author);
+
+            if (null == intTag || intTag == 0){
+                return JsonUtils.sealedErrorJSON("添加失败!");
+            }
+
+            return JsonUtils.sealedSuccessJSON("添加成功!");
+
+        }catch (Exception e){
+            LoggerUtils.addLoggerError(CLAZZ,"saveAuthorInfo",e.getMessage());
+            e.printStackTrace();
+            return JsonUtils.sealedExceptionJSON(e);
+        }
+    }
+
+        /**
+         * @param pJson
+         * @description 删除权限信息
+         * @author Blossom
+         * @DateTime 2017/3/9 10:52
+         */
+        @Override
+        public JSONObject removeAuthorInfo(JSONObject pJson) {
+            LoggerUtils.addLoggerInfo(CLAZZ,"removeAuthorInfo",pJson.toString());
+            try{
+                if (JsonUtils.checkJSONIsNull(pJson) || JsonUtils.checkJSONKey(pJson,"authortyId")){
+                    return JsonUtils.sealedErrorJSON("参数不全!");
+                }
+
+            String authortyId = pJson.getString("authortyId");
+            Map<String,Object> map = new HashMap<>();
+            map.put("authortyId",authortyId);
+            Integer intTag = authorDao.removeAuthorInfo(map);
+            if (null == intTag || intTag == 0){
+                return JsonUtils.sealedErrorJSON("删除失败!");
+            }
+
+            return JsonUtils.sealedSuccessJSON("删除成功!");
+
+        }catch (Exception e){
+            LoggerUtils.addLoggerError(CLAZZ,"removeAuthorInfo",e.getMessage());
+            e.printStackTrace();
+            return JsonUtils.sealedExceptionJSON(e);
+        }
+    }
+
+    /**
+     * @param pJson
+     * @description 更新权限信息
+     * @author Blossom
+     * @DateTime 2017/3/9 10:53
+     */
+    @Override
+    public JSONObject updateAuthorInfo(JSONObject pJson) {
+        LoggerUtils.addLoggerInfo(CLAZZ,"updateAuthorInfo",pJson.toString());
+        try{
+            if (JsonUtils.checkJSONIsNull(pJson) || JsonUtils.checkJSONKey(pJson,"authortyId")){
+                return JsonUtils.sealedErrorJSON("参数不全!");
+            }
+
+            String authortyId = pJson.getString("authortyId");
+            String authortyName = "";
+            if (!JsonUtils.checkJSONKey(pJson,"authortyName")){
+                authortyName = pJson.getString("authortyName");
+            }
+            String authortyDescription = "";
+            if (!JsonUtils.checkJSONKey(pJson,"authortyDescription")){
+                authortyDescription = pJson.getString("authortyDescription");
+            }
+            String authortyUrl = "";
+            if (!JsonUtils.checkJSONKey(pJson,"authortyUrl")){
+                authortyUrl = pJson.getString("authortyUrl");
+            }
+            Map<String,Object> map = new HashMap<>();
+            map.put("authortyId",authortyId);
+            map.put("authortyUrl",authortyUrl);
+            map.put("authortyName",authortyName);
+            map.put("authortyDescription",authortyDescription);
+
+            Integer intTag = authorDao.updateAuthorInfo(map);
+            if (null == intTag || intTag == 0){
+                return JsonUtils.sealedErrorJSON("修改失败!");
+            }
+
+            return JsonUtils.sealedSuccessJSON("修改成功!");
+
+        }catch (Exception e){
+            LoggerUtils.addLoggerError(CLAZZ,"updateAuthorInfo",e.getMessage());
             e.printStackTrace();
             return JsonUtils.sealedExceptionJSON(e);
         }

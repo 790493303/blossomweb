@@ -46,23 +46,34 @@ public class AuthorDaoImpl implements IAuthorDao{
 
     /**
      * @param pMap
-     * @description 根据用户账号获取权限
+     * @description 删除角色信息
      * @author Blossom
-     * @DateTime 2017/3/8 15:34
+     * @DateTime 2017/3/8 22:46
      */
     @Override
-    public List<AuthorEntity> queryAuthorInfoByUserAccount(Map<String, Object> pMap) {
-        return authorMapper.queryAuthorInfoByUserAccount(pMap);
+    public Integer removeAuthorInfo(Map<String, Object> pMap) {
+        return authorMapper.deleteAuthorInfo(pMap);
     }
 
     /**
      * @param pMap
-     * @description 根据角色获取权限信息
+     * @description 更新角色信息
      * @author Blossom
-     * @DateTime 2017/3/8 15:35
+     * @DateTime 2017/3/8 22:47
      */
     @Override
-    public List<AuthorEntity> queryAuthorInfoByRoleId(Map<String, Object> pMap) {
-        return authorMapper.queryAuthorInfoByRoleId(pMap);
+    public Integer updateAuthorInfo(Map<String, Object> pMap) {
+        return authorMapper.updateAuthorInfo(pMap);
+    }
+
+    /**
+     * @param author
+     * @description 添加角色信息
+     * @author Blossom
+     * @DateTime 2017/3/8 22:48
+     */
+    @Override
+    public Integer saveAuthorInfo(AuthorEntity author) {
+        return authorMapper.insertAuthorInfo(author);
     }
 }

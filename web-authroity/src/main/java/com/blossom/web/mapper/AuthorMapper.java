@@ -22,20 +22,32 @@ public interface AuthorMapper {
      */
     List<AuthorEntity> queryAllAuthorInfo(Map<String,Object> pMap);
 
-    /**
-     * @description 根据用户账号获取权限
-     * @author Blossom
-     * @DateTime 2017/3/8 15:08
-     * @param
-     */
-    List<AuthorEntity> queryAuthorInfoByUserAccount(Map<String,Object> pMap);
+
+
+
 
     /**
-     * @description 根据角色编号获取权限
+     * @description 添加角色
      * @author Blossom
-     * @DateTime 2017/3/8 15:09
+     * @DateTime 2017/3/8 22:21
      * @param
      */
-    List<AuthorEntity> queryAuthorInfoByRoleId(Map<String,Object> pMap);
+    Integer insertAuthorInfo(AuthorEntity author);
+
+    /**
+     * @description 删除角色
+     * @author Blossom
+     * @DateTime 2017/3/8 22:22
+     * @param
+     */
+    Integer deleteAuthorInfo(Map<String,Object> pMap);
+
+    /**
+     * @description 修改角色信息
+     * @author Blossom
+     * @DateTime 2017/3/8 22:23
+     * @param
+     */
+    Integer updateAuthorInfo(Map<String,Object> pMap);
 
 }
