@@ -26,6 +26,11 @@
     </dependencyManagement>
     <dependencies>
 
+        <dependency>
+            <groupId>com.blossom.web</groupId>
+            <artifactId>web-common</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

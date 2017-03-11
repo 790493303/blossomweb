@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blossom.web.mapper.AuthorMapper">
+
+    <resultMap id="authorMap" type="com.blossom.web.model.AuthorEntity">
+        <result column="authortyId" property="authortyId" />
+        <result column="parentAuthortyId" property="parentAuthortyId" />
+        <result column="authortyName" property="authortyName" />
+        <result column="authortyDescription" property="authortyDescription" />
+        <result column="authortyUrl" property="authortyUrl" />
+    </resultMap>
+
+    <!--获取全部的权限信息-->
+    <select id="queryAllAuthorInfo" parameterType="java.util.Map" resultMap="authorMap">
+        SELECT authortyId,parentAuthortyId,authortyName,authortyDescription,authortyUrl
+        FROM  tb_authorty
+    </select>
+
+    <!--添加权限信息-->
+    <insert id="insertAuthorInfo" parameterType="com.blossom.web.model.AuthorEntity">
+        INSERT INTO
+          tb_authorty(parentAuthortyId,authortyName,authortyDescription,authortyUrl)
+        VALUES (#{parentAuthortyId},#{authortyName},#{authortyDescription},#{authortyUrl})
+    </insert>
+
+    <!--修改权限信息-->
+    <update id="updateAuthorInfo" parameterType="java.util.Map">
+        UPDATE tb_authorty
+        <set>
+            <if test="authortyName != null"> authortyName = #{authortyName},</if>
+            <if test="authortyDescription != null"> authortyDescription = #{authortyDescription},</if>
+            <if test="authortyUrl != null">authortyUrl = #{authortyUrl}</if>
+        </set>
+        where
+            authortyId = #{authortyId}
+    </update>
+
+    <!--删除权限信息-->
+    <delete id="deleteAuthorInfo" parameterType="java.util.Map">
+        DELETE  FROM  tb_authorty WHERE authortyId = #{authortyId}
+    </delete>
+
+
+</mapper>

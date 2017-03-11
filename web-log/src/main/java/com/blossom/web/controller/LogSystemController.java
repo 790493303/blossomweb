@@ -4,6 +4,7 @@ import com.blossom.web.annotation.ControllerLogAnnotation;
 import com.blossom.web.service.ILogSystemService;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -37,6 +38,14 @@ public class LogSystemController {
 		JSONObject json = new JSONObject();
 		json = logSystemService.queryLogSystem(json);
 		return json;
+	}
+
+	@RequestMapping("/index")
+	public String returnIndex(HttpServletRequest request,
+							  HttpServletResponse response,
+							  Model model){
+		model.addAttribute("admin","admin");
+		return "index";
 	}
 
 }

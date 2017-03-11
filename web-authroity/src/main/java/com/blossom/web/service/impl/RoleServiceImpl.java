@@ -11,7 +11,7 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,7 +99,7 @@ public class RoleServiceImpl implements IRoleService {
             String roleName = pJson.getString("roleName");
             Integer parentRoleId = pJson.getInt("parentRoleId");
             String roleDescription = pJson.getString("roleDescription");
-            Date createTime = DateUtils.format();
+            Timestamp createTime = DateUtils.dateToTimestamp(DateUtils.format());
 
             RoleEntity role = new RoleEntity();
 

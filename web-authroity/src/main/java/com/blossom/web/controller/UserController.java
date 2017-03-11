@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Blossom
@@ -17,6 +19,8 @@ public class UserController {
 
     @Resource(name = "userService")
     private IUserService userService;
+
+
 
 
 

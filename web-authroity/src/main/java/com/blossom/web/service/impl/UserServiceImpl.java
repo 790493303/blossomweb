@@ -10,6 +10,7 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.*;
 
 /**
@@ -109,7 +110,7 @@ public class UserServiceImpl implements IUserService {
             String userName = pJson.getString("userName");
             String telephone = pJson.getString("telephone");
             String email = pJson.getString("email");
-            Date createTime = DateUtils.format();
+            Timestamp createTime = DateUtils.dateToTimestamp(DateUtils.format());
 
             UserEntity user = new UserEntity();
 

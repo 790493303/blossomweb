@@ -1,7 +1,7 @@
 package com.blossom.web.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import  java.sql.Timestamp;
 
 /**
  * @author Blossom
@@ -26,11 +26,11 @@ public class UserEntity implements Serializable{
     //邮箱
     private String email;
     //注册时间
-    private Date createTime;
+    private Timestamp createTime;
     //登录时间
-    private Date loginTime;
+    private Timestamp loginTime;
     //最后一次登录时间
-    private Date lastLoginTime;
+    private Timestamp lastLoginTime;
     //登录次数
     private Integer loginCount;
 
@@ -62,15 +62,15 @@ public class UserEntity implements Serializable{
         return email;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public Date getLoginTime() {
+    public Timestamp getLoginTime() {
         return loginTime;
     }
 
-    public Date getLastLoginTime() {
+    public Timestamp getLastLoginTime() {
         return lastLoginTime;
     }
 
@@ -106,15 +106,15 @@ public class UserEntity implements Serializable{
         this.email = email;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 
-    public void setLoginTime(Date loginTime) {
+    public void setLoginTime(Timestamp loginTime) {
         this.loginTime = loginTime;
     }
 
-    public void setLastLoginTime(Date lastLoginTime) {
+    public void setLastLoginTime(Timestamp lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 

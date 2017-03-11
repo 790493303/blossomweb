@@ -1,7 +1,7 @@
 package com.blossom.web.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * @author Blossom
@@ -18,7 +18,7 @@ public class RoleEntity implements Serializable{
     //角色名称
     private String roleName;
     //创建时间
-    private Date createTime;
+    private Timestamp createTime;
     //角色说明
     private  String roleDescription;
 
@@ -46,11 +46,11 @@ public class RoleEntity implements Serializable{
         this.roleName = roleName;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 
@@ -62,7 +62,7 @@ public class RoleEntity implements Serializable{
         this.roleDescription = roleDescription;
     }
 
-    public RoleEntity(Integer roleId, Integer parentRoleId, String roleName, Date createTime, String roleDescription) {
+    public RoleEntity(Integer roleId, Integer parentRoleId, String roleName, Timestamp createTime, String roleDescription) {
         this.roleId = roleId;
         this.parentRoleId = parentRoleId;
         this.roleName = roleName;
