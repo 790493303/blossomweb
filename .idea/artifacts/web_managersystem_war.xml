@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="web-managersystem:war">
     <output-path>$PROJECT_DIR$/web-managersystem/target</output-path>
-    <root id="archive" name="web-managersystem.war">
+    <root id="archive" name="webmanager.war">
       <element id="artifact" artifact-name="web-managersystem:war exploded" />
     </root>
   </artifact>

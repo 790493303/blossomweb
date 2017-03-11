@@ -1,0 +1,4 @@
+[2017-03-04 11:21:34,213] 0    [http-nio-127.0.0.1-1314-exec-1] INFO  com.alibaba.druid.pool.DruidDataSource  - {dataSource-1} inited 
+[2017-03-04 11:21:34,600] 387  [http-nio-127.0.0.1-1314-exec-1] INFO  com.blossom.web.service.impl.LogSystemServiceImpl  - 获取系统日志! 
+[2017-03-04 16:04:00,667] 0    [http-nio-127.0.0.1-1314-exec-1] INFO  com.alibaba.druid.pool.DruidDataSource  - {dataSource-1} inited 
+[2017-03-04 16:04:01,221] 554  [http-nio-127.0.0.1-1314-exec-1] INFO  com.blossom.web.service.impl.LogSystemServiceImpl  - 获取系统日志! 

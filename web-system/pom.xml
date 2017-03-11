@@ -18,12 +18,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.blossom.web</groupId>
-            <artifactId>web-common</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
-
 </project>

@@ -2,7 +2,6 @@ package com.blossom.web.aspectj;
 
 import com.blossom.web.annotation.ControllerLogAnnotation;
 import com.blossom.web.service.ILogHandleService;
-import com.blossom.web.util.IdGen;
 import net.sf.json.JSONObject;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -59,7 +58,7 @@ public class ControllerLogAspect {
 			// *========数据库日志=========*//
 			// 保存日志到数据库
 			JSONObject json = new JSONObject();
-			json.put("id", IdGen.uuid());
+			json.put("uuid", "1234567890");
 			json.put("url", request.getRequestURL().toString());
 			json.put("httpMethod", request.getMethod());
 			// json.put("broswer",BrowserUtils.checkBrowse(request));
